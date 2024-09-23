@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Your Order</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 1.2rem;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        select, textarea, input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        select:focus, textarea:focus, input[type="submit"]:focus {
+            border-color: #e31837;
+            outline: none;
+            box-shadow: 0 0 5px rgba(227, 24, 55, 0.5);
+        }
+
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        input[type="submit"] {
+            background-color: #e31837;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #cc1c2e;
+        }
+
+        input[type="submit"]:active {
+            background-color: #b01626;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    {% load static %}
+    <img src="{% static 'images/papa_johns_logo.png' %}" alt="Papa John's Logo" class="logo">
+
+    <form action="#" method="POST">
+
+        <select name="pizza_type" id="pizza_type" required>
+            <option value="" disabled selected>Select your pizza</option>
+            <option value="margherita">Margherita</option>
+            <option value="pepperoni">Pepperoni</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="hawaiian">Hawaiian</option>
+        </select>
+
+        <textarea name="comments" id="comments" placeholder="Any special instructions or preferences?"></textarea>
+
+        <input type="submit" value="Place Order">
+    </form>
+
+</body>
+</html>
