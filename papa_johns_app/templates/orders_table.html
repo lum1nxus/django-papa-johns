@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Table</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #e31837;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 70%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #e31837;
+            color: white;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        td {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pizza-type {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .comments {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+
+    <img src="{% static 'images/papa_johns_logo.png' %}" alt="Papa John's Logo" class="logo">
+
+    <h1>All Pizza Orders</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pizza Type</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td class="pizza-type">{{ order.get_pizza_type_display }}</td>
+                <td class="comments">{{ order.comments }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No orders have been placed yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
