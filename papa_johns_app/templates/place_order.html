@@ -95,8 +95,8 @@
 
     <img src="{% static 'images/papa_johns_logo.png' %}" alt="Papa John's Logo" class="logo">
 
-    <form action="#" method="POST">
-
+    <form id="pizzaOrderForm" action="{% url 'place_order' %}" method="POST">
+        {% csrf_token %}
         <select name="pizza_type" id="pizza_type" required>
             <option value="" disabled selected>Select your pizza</option>
             <option value="margherita">Margherita</option>
@@ -109,6 +109,33 @@
 
         <input type="submit" value="Place Order">
     </form>
+
+    <p id="warningMessage" style="color: black; display: none;"></p>
+
+    <script>
+        document.getElementById('pizzaOrderForm').addEventListener('submit', function(event) {
+            const pizzaType = document.getElementById('pizza_type').value;
+
+            // Array of jokes
+            const jokes = [
+                "Pineapple on pizza? That's an international crime in Italy!",
+                "Somewhere, an Italian chef is crying.",
+                "Hawaiian pizza? The pizza gods are not happy.",
+                "Italy just revoked your pizza privileges.",
+                "Pineapple on pizza? That's like putting ketchup on pasta!"
+            ];
+
+            if (pizzaType === 'hawaiian') {
+                event.preventDefault();
+
+                const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+
+                document.getElementById('warningMessage').innerText = randomJoke;
+                document.getElementById('warningMessage').style.display = 'block';
+            }
+        });
+    </script>
+
 
     <script>
         const pizza = document.getElementById('movingPizza');
