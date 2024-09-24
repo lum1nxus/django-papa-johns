@@ -12,6 +12,10 @@ RUN pip install -r requirements.txt
 
 COPY . /app/
 
+RUN groupadd -r djangouser && useradd -r -g djangouser djangouser
+RUN chown -R djangouser:djangouser /app
+USER djangouser
+
 EXPOSE 8000
 
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["sh", "-c", "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"]
