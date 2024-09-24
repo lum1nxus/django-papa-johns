@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Place Your Order</title>
+    {% load static %}
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -11,6 +12,8 @@
             color: #333;
             text-align: center;
             padding: 50px;
+            overflow: hidden;
+            position: relative;
         }
 
         form {
@@ -20,6 +23,8 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            position: relative;
         }
 
         label {
@@ -71,12 +76,23 @@
         .logo {
             max-width: 200px;
             margin-bottom: 30px;
+            z-index: 3;
+        }
+
+        .moving-pizza {
+            position: absolute;
+            width: 140px;
+            height: 100px;
+            background-image: url('{% static "images/pizza.png" %}');
+            background-size: cover;
+            z-index: 1;
         }
 
     </style>
 </head>
 <body>
-    {% load static %}
+    <div class="moving-pizza" id="movingPizza"></div>
+
     <img src="{% static 'images/papa_johns_logo.png' %}" alt="Papa John's Logo" class="logo">
 
     <form action="#" method="POST">
@@ -93,6 +109,55 @@
 
         <input type="submit" value="Place Order">
     </form>
+
+    <script>
+        const pizza = document.getElementById('movingPizza');
+        let x = 0;
+        let y = 0;
+        let xSpeed = getRandomSpeed();
+        let ySpeed = getRandomSpeed();
+
+        function getRandomSpeed() {
+            return (Math.random() * 3 + 1) * (Math.random() < 0.5 ? -1 : 1);
+        }
+
+        function randomizeDirection() {
+            xSpeed = getRandomSpeed();
+            ySpeed = getRandomSpeed();
+        }
+
+        function movePizza() {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            const pizzaRect = pizza.getBoundingClientRect();
+            const pizzaWidth = pizzaRect.width;
+            const pizzaHeight = pizzaRect.height;
+
+            x += xSpeed;
+            y += ySpeed;
+
+            if (x + pizzaWidth >= windowWidth || x <= 0) {
+                xSpeed = -xSpeed;
+            }
+            if (y + pizzaHeight >= windowHeight || y <= 0) {
+                ySpeed = -ySpeed;
+            }
+
+            pizza.style.left = `${x}px`;
+            pizza.style.top = `${y}px`;
+
+            requestAnimationFrame(movePizza);
+        }
+
+        setInterval(randomizeDirection, Math.random() * 2000 + 2000);
+
+        pizza.style.position = "absolute";
+        pizza.style.left = `${x}px`;
+        pizza.style.top = `${y}px`;
+
+        movePizza();
+    </script>
 
 </body>
 </html>
