@@ -1,0 +1,74 @@
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Ignore collected static files
+/staticfiles/
+/static/
+
+# Ignore local environment variables and configuration files
+.env
+.env.*
+
+# Ignore virtual environments
+venv/
+env/
+.idea/
+.vscode/
+
+# Ignore JetBrains project files
+*.iml
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Ignore testing and coverage files
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore local static and media files
+/media/
+staticfiles/
+
+# Ignore node modules
+node_modules/
+
+# Ignore database dumps
+*.sql

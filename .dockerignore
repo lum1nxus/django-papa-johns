@@ -1,0 +1,56 @@
+# Ignore Python cache and compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore development and temporary files
+*.log
+*.pot
+*.mo
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Ignore IDE and editor config files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore test databases
+db.sqlite3
+db.sqlite3-journal
+
+# Ignore Django static files (if collected)
+staticfiles/
+static/
+
+# Ignore media files (user-uploaded content, optional)
+media/
+
+# Ignore environment files (sensitive info)
+.env
+.env.local
+.env.*
+
+# Ignore Dockerfile and docker-compose (optional)
+Dockerfile
+docker-compose.yml
+
+# Ignore git and version control
+.git/
+.gitignore
+
+# Ignore node modules (if using npm/yarn for front-end assets)
+node_modules/
+
+# Ignore coverage and test reports
+htmlcov/
+coverage/
+*.cover
+*.lcov
